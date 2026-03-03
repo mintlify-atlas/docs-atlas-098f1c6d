@@ -303,7 +303,7 @@ Earthquake data in the `payload` follows the GeoJSON Feature format:
 ```
 
 ```bash Request
-curl "https://api.terraquake.com/earthquakes/recent?limit=50"
+curl "https://api.terraquakeapi.com/earthquakes/recent?limit=50"
 ```
 
 </CodeGroup>
@@ -351,7 +351,7 @@ curl "https://api.terraquake.com/earthquakes/recent?limit=50"
 ```
 
 ```bash Request
-curl "https://api.terraquake.com/earthquakes/magnitude?mag=5.0"
+curl "https://api.terraquakeapi.com/earthquakes/magnitude?mag=5.0"
 ```
 
 </CodeGroup>
@@ -442,13 +442,13 @@ Some endpoints support additional query parameters to filter and sort results:
 
 ```bash
 # Sort by magnitude (descending)
-curl "https://api.terraquake.com/earthquakes/recent?sort=-magnitude"
+curl "https://api.terraquakeapi.com/earthquakes/recent?sort=-magnitude"
 
 # Sort by time (ascending)
-curl "https://api.terraquake.com/earthquakes/recent?sort=time"
+curl "https://api.terraquakeapi.com/earthquakes/recent?sort=time"
 
 # Multiple sort fields
-curl "https://api.terraquake.com/earthquakes/recent?sort=-magnitude,time"
+curl "https://api.terraquakeapi.com/earthquakes/recent?sort=-magnitude,time"
 ```
 
 **Sortable fields:** `time`, `magnitude`, `depth`
@@ -461,7 +461,7 @@ curl "https://api.terraquake.com/earthquakes/recent?sort=-magnitude,time"
 
 ```bash
 # Request specific fields only
-curl "https://api.terraquake.com/earthquakes/recent?fields=time,magnitude,place"
+curl "https://api.terraquakeapi.com/earthquakes/recent?fields=time,magnitude,place"
 ```
 
 **Response with field selection:**
@@ -521,7 +521,7 @@ interface EarthquakeFeature {
   };
 }
 
-const response = await fetch('https://api.terraquake.com/earthquakes/recent');
+const response = await fetch('https://api.terraquakeapi.com/earthquakes/recent');
 const data: APIResponse = await response.json();
 
 // Access earthquake data
@@ -543,7 +543,7 @@ import requests
 from typing import List, Dict, Any
 
 def get_earthquakes() -> Dict[str, Any]:
-    response = requests.get('https://api.terraquake.com/earthquakes/recent')
+    response = requests.get('https://api.terraquakeapi.com/earthquakes/recent')
     return response.json()
 
 data = get_earthquakes()

@@ -20,14 +20,14 @@ Query earthquakes near a specific latitude/longitude point within a given radius
 ### Basic Usage
 
 ```bash cURL
-curl "https://api.terraquake.com/api/v1/earthquakes/location?latitude=42.3601&longitude=13.3957&radius=50"
+curl "https://api.terraquakeapi.com/api/v1/earthquakes/location?latitude=42.3601&longitude=13.3957&radius=50"
 ```
 
 ```python Python
 import requests
 
 # Find earthquakes near L'Aquila
-url = 'https://api.terraquake.com/api/v1/earthquakes/location'
+url = 'https://api.terraquakeapi.com/api/v1/earthquakes/location'
 params = {
     'latitude': 42.3601,   # L'Aquila
     'longitude': 13.3957,
@@ -42,7 +42,7 @@ print(f"Found {data['totalEarthquakes']} earthquakes within 50km of L'Aquila")
 ```
 
 ```javascript JavaScript
-const url = new URL('https://api.terraquake.com/api/v1/earthquakes/location');
+const url = new URL('https://api.terraquakeapi.com/api/v1/earthquakes/location');
 url.searchParams.set('latitude', '42.3601');
 url.searchParams.set('longitude', '13.3957');
 url.searchParams.set('radius', '50');
@@ -76,7 +76,7 @@ Here are examples for major Italian cities:
     ```python Python
     import requests
 
-    url = 'https://api.terraquake.com/api/v1/earthquakes/location'
+    url = 'https://api.terraquakeapi.com/api/v1/earthquakes/location'
     params = {
         'latitude': 41.9028,
         'longitude': 12.4964,
@@ -97,7 +97,7 @@ Here are examples for major Italian cities:
     import requests
 
     # Naples (Vesuvius area)
-    url = 'https://api.terraquake.com/api/v1/earthquakes/location'
+    url = 'https://api.terraquakeapi.com/api/v1/earthquakes/location'
     params = {
         'latitude': 40.8518,
         'longitude': 14.2681,
@@ -112,7 +112,7 @@ Here are examples for major Italian cities:
 
   <Tab title="Milan">
     ```javascript JavaScript
-    const url = new URL('https://api.terraquake.com/api/v1/earthquakes/location');
+    const url = new URL('https://api.terraquakeapi.com/api/v1/earthquakes/location');
     url.searchParams.set('latitude', '45.4642');
     url.searchParams.set('longitude', '9.1900');
     url.searchParams.set('radius', '75');
@@ -124,7 +124,7 @@ Here are examples for major Italian cities:
 
   <Tab title="Venice">
     ```javascript JavaScript
-    const url = new URL('https://api.terraquake.com/api/v1/earthquakes/location');
+    const url = new URL('https://api.terraquakeapi.com/api/v1/earthquakes/location');
     url.searchParams.set('latitude', '45.4408');
     url.searchParams.set('longitude', '12.3155');
     url.searchParams.set('radius', '60');
@@ -177,14 +177,14 @@ All 20 Italian regions are supported:
 ### Query by Region
 
 ```bash cURL
-curl "https://api.terraquake.com/api/v1/earthquakes/region?region=Calabria"
+curl "https://api.terraquakeapi.com/api/v1/earthquakes/region?region=Calabria"
 ```
 
 ```python Python
 import requests
 
 # Get earthquakes in Calabria
-url = 'https://api.terraquake.com/api/v1/earthquakes/region'
+url = 'https://api.terraquakeapi.com/api/v1/earthquakes/region'
 params = {
     'region': 'Calabria',  # Case-insensitive
     'limit': 100,
@@ -204,7 +204,7 @@ if data['payload']:
 
 ```javascript JavaScript
 const region = 'Sicilia';
-const url = `https://api.terraquake.com/api/v1/earthquakes/region?region=${region}`;
+const url = `https://api.terraquakeapi.com/api/v1/earthquakes/region?region=${region}`;
 
 const response = await fetch(url);
 const data = await response.json();
@@ -223,7 +223,7 @@ import requests
 import pandas as pd
 
 regions = ['Calabria', 'Sicilia', 'Campania', 'Abruzzo', 'Friuli_Venezia_Giulia']
-url = 'https://api.terraquake.com/api/v1/earthquakes/region'
+url = 'https://api.terraquakeapi.com/api/v1/earthquakes/region'
 
 results = []
 
@@ -347,7 +347,7 @@ class EarthquakeMonitor:
     
     def check_for_earthquakes(self):
         """Check for new earthquakes near location"""
-        url = 'https://api.terraquake.com/api/v1/earthquakes/location'
+        url = 'https://api.terraquakeapi.com/api/v1/earthquakes/location'
         params = {
             'latitude': self.lat,
             'longitude': self.lon,
@@ -401,7 +401,7 @@ import folium
 
 def create_region_map(region_name):
     """Create an interactive map of earthquakes in a region"""
-    url = 'https://api.terraquake.com/api/v1/earthquakes/region'
+    url = 'https://api.terraquakeapi.com/api/v1/earthquakes/region'
     params = {'region': region_name, 'limit': 500}
     
     response = requests.get(url, params=params)
@@ -450,7 +450,7 @@ from haversine import haversine
 
 def find_nearest_earthquake(lat, lon, max_radius=200):
     """Find the nearest earthquake to a coordinate"""
-    url = 'https://api.terraquake.com/api/v1/earthquakes/location'
+    url = 'https://api.terraquakeapi.com/api/v1/earthquakes/location'
     params = {
         'latitude': lat,
         'longitude': lon,

@@ -109,7 +109,7 @@ The API uses standard HTTP status codes to indicate the success or failure of re
 
 **Request:**
 ```bash
-curl "https://api.terraquake.com/earthquakes/recent?page=0&limit=-5"
+curl "https://api.terraquakeapi.com/earthquakes/recent?page=0&limit=-5"
 ```
 
 **Response:**
@@ -129,7 +129,7 @@ curl "https://api.terraquake.com/earthquakes/recent?page=0&limit=-5"
 **Request:**
 ```bash
 # 101st request in 1 second
-curl "https://api.terraquake.com/earthquakes/recent"
+curl "https://api.terraquakeapi.com/earthquakes/recent"
 ```
 
 **Response:**
@@ -157,7 +157,7 @@ Retry-After: 1
 
 **Request:**
 ```bash
-curl "https://api.terraquake.com/earthquakes/recent"
+curl "https://api.terraquakeapi.com/earthquakes/recent"
 ```
 
 **Response:**
@@ -176,7 +176,7 @@ curl "https://api.terraquake.com/earthquakes/recent"
 
 **Request:**
 ```bash
-curl "https://api.terraquake.com/earthquakes/date-range?startdate=invalid&enddate=2026-03-03"
+curl "https://api.terraquakeapi.com/earthquakes/date-range?startdate=invalid&enddate=2026-03-03"
 ```
 
 **Response:**
@@ -195,7 +195,7 @@ curl "https://api.terraquake.com/earthquakes/date-range?startdate=invalid&enddat
 
 **Request:**
 ```bash
-curl "https://api.terraquake.com/earthquakes/nonexistent-endpoint"
+curl "https://api.terraquakeapi.com/earthquakes/nonexistent-endpoint"
 ```
 
 **Response:**
@@ -243,7 +243,7 @@ Source: `/home/daytona/workspace/source/backend/src/utils/handleHttpError.js:5-1
 async function getEarthquakes() {
   try {
     const response = await fetch(
-      'https://api.terraquake.com/earthquakes/recent?limit=50'
+      'https://api.terraquakeapi.com/earthquakes/recent?limit=50'
     );
 
     // Check if response is ok (status 200-299)
@@ -285,7 +285,7 @@ async function getEarthquakes() {
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://api.terraquake.com',
+  baseURL: 'https://api.terraquakeapi.com',
   timeout: 10000,
 });
 
@@ -348,7 +348,7 @@ import requests
 import time
 
 def get_earthquakes(max_retries=3):
-    url = 'https://api.terraquake.com/earthquakes/recent'
+    url = 'https://api.terraquakeapi.com/earthquakes/recent'
     params = {'limit': 50}
     
     for attempt in range(max_retries):
@@ -434,7 +434,7 @@ type ErrorResponse struct {
 }
 
 func getEarthquakes(maxRetries int) (map[string]interface{}, error) {
-    url := "https://api.terraquake.com/earthquakes/recent?limit=50"
+    url := "https://api.terraquakeapi.com/earthquakes/recent?limit=50"
     
     for attempt := 0; attempt < maxRetries; attempt++ {
         resp, err := http.Get(url)

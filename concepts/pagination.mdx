@@ -130,19 +130,19 @@ Source: `/home/daytona/workspace/source/backend/src/utils/processFeatures.js:99-
 
 ```bash cURL
 # Get first page (default)
-curl "https://api.terraquake.com/earthquakes/recent"
+curl "https://api.terraquakeapi.com/earthquakes/recent"
 
 # Get second page with 25 results
-curl "https://api.terraquake.com/earthquakes/recent?page=2&limit=25"
+curl "https://api.terraquakeapi.com/earthquakes/recent?page=2&limit=25"
 
 # Get maximum results per page
-curl "https://api.terraquake.com/earthquakes/recent?limit=100"
+curl "https://api.terraquakeapi.com/earthquakes/recent?limit=100"
 ```
 
 ```javascript JavaScript
 // Fetch first page
 const response = await fetch(
-  'https://api.terraquake.com/earthquakes/recent?page=1&limit=50'
+  'https://api.terraquakeapi.com/earthquakes/recent?page=1&limit=50'
 );
 const data = await response.json();
 
@@ -156,7 +156,7 @@ import requests
 
 # Fetch first page
 response = requests.get(
-    'https://api.terraquake.com/earthquakes/recent',
+    'https://api.terraquakeapi.com/earthquakes/recent',
     params={'page': 1, 'limit': 50}
 )
 data = response.json()
@@ -180,7 +180,7 @@ async function fetchAllEarthquakes() {
 
   while (hasMore) {
     const response = await fetch(
-      `https://api.terraquake.com/earthquakes/recent?page=${page}&limit=100`
+      `https://api.terraquakeapi.com/earthquakes/recent?page=${page}&limit=100`
     );
     const data = await response.json();
 
@@ -213,7 +213,7 @@ def fetch_all_earthquakes():
     
     while has_more:
         response = requests.get(
-            'https://api.terraquake.com/earthquakes/recent',
+            'https://api.terraquakeapi.com/earthquakes/recent',
             params={'page': page, 'limit': 100}
         )
         data = response.json()
@@ -260,7 +260,7 @@ func fetchAllEarthquakes() ([]interface{}, error) {
 
     for hasMore {
         url := fmt.Sprintf(
-            "https://api.terraquake.com/earthquakes/recent?page=%d&limit=100",
+            "https://api.terraquakeapi.com/earthquakes/recent?page=%d&limit=100",
             page,
         )
         
@@ -299,7 +299,7 @@ async function fetchEarthquakesWithRateLimit() {
 
   while (true) {
     const response = await fetch(
-      `https://api.terraquake.com/earthquakes/recent?page=${page}&limit=100`
+      `https://api.terraquakeapi.com/earthquakes/recent?page=${page}&limit=100`
     );
 
     // Check rate limit headers
@@ -337,13 +337,13 @@ You can combine pagination with other query parameters:
 
 ```bash
 # Paginate through earthquakes in a specific region
-curl "https://api.terraquake.com/earthquakes/region?region=italy&page=2&limit=50"
+curl "https://api.terraquakeapi.com/earthquakes/region?region=italy&page=2&limit=50"
 
 # Paginate through high-magnitude earthquakes
-curl "https://api.terraquake.com/earthquakes/magnitude?mag=5.0&page=1&limit=25"
+curl "https://api.terraquakeapi.com/earthquakes/magnitude?mag=5.0&page=1&limit=25"
 
 # Paginate through earthquakes in a date range
-curl "https://api.terraquake.com/earthquakes/date-range?startdate=2026-01-01&enddate=2026-03-03&page=3&limit=100"
+curl "https://api.terraquakeapi.com/earthquakes/date-range?startdate=2026-01-01&enddate=2026-03-03&page=3&limit=100"
 ```
 
 ## Error Handling
@@ -387,7 +387,7 @@ If you request a limit less than 1:
 ```javascript
 // If there are only 10 pages, requesting page 100 returns page 10
 const response = await fetch(
-  'https://api.terraquake.com/earthquakes/recent?page=100'
+  'https://api.terraquakeapi.com/earthquakes/recent?page=100'
 );
 const data = await response.json();
 console.log(data.pagination.page); // 10 (last available page)

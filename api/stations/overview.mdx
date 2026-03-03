@@ -118,11 +118,11 @@ No authentication required. All endpoints are publicly accessible.
 
 ## Rate Limits
 
-- **Limit**: 100 requests per second per IP
-- **Window**: 1 second (fixed window)
+- **Limit**: 100 requests per minute per IP
+- **Window**: 1 minute (fixed window)
 - **Headers**: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`
 
-See [Rate Limiting](/api-reference/rate-limits) for details.
+See [Rate Limiting](/concepts/rate-limiting) for details.
 
 ## Response Format
 

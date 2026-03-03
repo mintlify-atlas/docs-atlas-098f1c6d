@@ -94,7 +94,7 @@
     "Seismic station monitoring network",
     "Geographic queries with radius-based search",
     "Italian region-specific data",
-    "Rate limiting (100 req/sec)",
+    "Rate limiting (100 req/min)",
     "GeoJSON format support",
     "RESTful API design",
     "Detailed pagination support"

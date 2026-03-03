@@ -19,7 +19,7 @@ import requests
 
 def fetch_all_earthquakes(start_date, end_date):
     """Fetch earthquakes using pagination"""
-    url = 'https://api.terraquake.com/api/v1/earthquakes/range'
+    url = 'https://api.terraquakeapi.com/api/v1/earthquakes/range'
     all_events = []
     page = 1
     
@@ -52,7 +52,7 @@ print(f"Total: {len(earthquakes)} earthquakes")
 import requests
 
 # ❌ Don't fetch without pagination
-url = 'https://api.terraquake.com/api/v1/earthquakes/recent'
+url = 'https://api.terraquakeapi.com/api/v1/earthquakes/recent'
 response = requests.get(url)  # Gets only first 50 results
 data = response.json()
 
@@ -74,7 +74,7 @@ Use field selection and sorting to optimize responses.
 import requests
 
 # ✅ Request only required fields
-url = 'https://api.terraquake.com/api/v1/earthquakes/recent'
+url = 'https://api.terraquakeapi.com/api/v1/earthquakes/recent'
 params = {
     'fields': 'time,magnitude,place,coordinates',  # Only what you need
     'sort': '-magnitude',  # Get important data first
@@ -89,7 +89,7 @@ data = response.json()
 import requests
 
 # ❌ Fetching all fields when only magnitude is needed
-url = 'https://api.terraquake.com/api/v1/earthquakes/recent'
+url = 'https://api.terraquakeapi.com/api/v1/earthquakes/recent'
 response = requests.get(url, params={'limit': 500})  # Large payload
 
 data = response.json()
@@ -105,13 +105,13 @@ Choose the most specific endpoint for your use case.
 import requests
 
 # ✅ GOOD: Use specific endpoint for today's data
-response = requests.get('https://api.terraquake.com/api/v1/earthquakes/today')
+response = requests.get('https://api.terraquakeapi.com/api/v1/earthquakes/today')
 
 # ❌ BAD: Using generic endpoint with filters
 from datetime import date
 today = date.today().isoformat()
 response = requests.get(
-    'https://api.terraquake.com/api/v1/earthquakes/range',
+    'https://api.terraquakeapi.com/api/v1/earthquakes/range',
     params={'startdate': today, 'enddate': today}
 )  # More processing required
 ```
@@ -144,7 +144,7 @@ Implement caching to reduce API calls and improve performance.
 
     class TerraQuakeClient:
         def __init__(self):
-            self.base_url = 'https://api.terraquake.com/api/v1'
+            self.base_url = 'https://api.terraquakeapi.com/api/v1'
             self.cache = {}
         
         def _get_cache_key(self, endpoint, params):
@@ -212,7 +212,7 @@ from datetime import timedelta
 
 class CachedTerraQuakeClient:
     def __init__(self, redis_url='redis://localhost:6379'):
-        self.base_url = 'https://api.terraquake.com/api/v1'
+        self.base_url = 'https://api.terraquakeapi.com/api/v1'
         self.redis = redis.from_url(redis_url)
     
     def get_earthquakes(self, endpoint, params, cache_ttl=300):
@@ -301,7 +301,7 @@ client = RateLimitedClient(max_requests=60, time_window=60)
 
 # Make many requests - automatically throttled
 for i in range(100):
-    response = client.get('https://api.terraquake.com/api/v1/earthquakes/today')
+    response = client.get('https://api.terraquakeapi.com/api/v1/earthquakes/today')
     print(f"Request {i+1}: {response.status_code}")
 ```
 
@@ -333,7 +333,7 @@ def fetch_with_retry(url, params=None, max_retries=3):
 # Usage
 try:
     data = fetch_with_retry(
-        'https://api.terraquake.com/api/v1/earthquakes/recent',
+        'https://api.terraquakeapi.com/api/v1/earthquakes/recent',
         params={'limit': 100}
     )
     print(f"Success: {len(data['payload'])} earthquakes")
@@ -363,7 +363,7 @@ class TerraQuakeAPIError(Exception):
     pass
 
 class TerraQuakeClient:
-    def __init__(self, base_url='https://api.terraquake.com/api/v1'):
+    def __init__(self, base_url='https://api.terraquakeapi.com/api/v1'):
         self.base_url = base_url
         self.session = requests.Session()
         self.session.headers.update({
@@ -447,7 +447,7 @@ from datetime import datetime
 
 class ResilientTerraQuakeClient:
     def __init__(self):
-        self.base_url = 'https://api.terraquake.com/api/v1'
+        self.base_url = 'https://api.terraquakeapi.com/api/v1'
         self.fallback_data = None
     
     def get_earthquakes_with_fallback(self, endpoint, params):
@@ -501,7 +501,7 @@ from datetime import datetime
 class EarthquakePoller:
     def __init__(self, check_interval=300):
         """Initialize poller (default: check every 5 minutes)"""
-        self.base_url = 'https://api.terraquake.com/api/v1'
+        self.base_url = 'https://api.terraquakeapi.com/api/v1'
         self.check_interval = check_interval
         self.last_event_time = None
     
@@ -581,7 +581,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def fetch_region(region):
     """Fetch earthquakes for a single region"""
-    url = 'https://api.terraquake.com/api/v1/earthquakes/region'
+    url = 'https://api.terraquakeapi.com/api/v1/earthquakes/region'
     params = {'region': region, 'limit': 100}
     
     try:
@@ -632,7 +632,7 @@ from urllib3.util.retry import Retry
 
 class OptimizedTerraQuakeClient:
     def __init__(self):
-        self.base_url = 'https://api.terraquake.com/api/v1'
+        self.base_url = 'https://api.terraquakeapi.com/api/v1'
         
         # Configure session with connection pooling
         self.session = requests.Session()
@@ -691,7 +691,7 @@ logger = logging.getLogger('TerraQuakeClient')
 
 class MonitoredClient:
     def __init__(self):
-        self.base_url = 'https://api.terraquake.com/api/v1'
+        self.base_url = 'https://api.terraquakeapi.com/api/v1'
         self.request_count = 0
         self.error_count = 0
         self.total_response_time = 0
